@@ -5,7 +5,7 @@
   "description": "atom integration with postgresql psql client",
   "keywords": [],
   "activationCommands": {},
-  "repository": "https://github.com/atom/atom-psql",
+  "repository": "git@github.com:maisk/atom-psql.git",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
