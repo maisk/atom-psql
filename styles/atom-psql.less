@@ -1,0 +1,187 @@
+// The ui-variables file is provided by base themes provided by Atom.
+// https://github.com/atom/atom-dark-ui/blob/master/styles/ui-variables.less
+// https://github.com/atom/atom/blob/master/static/variables/syntax-variables.less
+// https://github.com/atom/atom/blob/master/static/variables/ui-variables.less
+// for a full listing of what's available.
+@import "ui-variables";
+//@import "syntax-variables";
+
+@font-face {
+	font-family: 'FontAwesome';
+	src: url('atom://data-atom/resources/fontawesome-webfont.woff2') format('woff2');
+}
+
+.atom-psql.autocomplete {
+	padding-right: 0.5em;
+
+	&-tbl::before {
+		font-family: "FontAwesome";
+		content: "\f0ce";
+	}
+
+	&-col::before {
+		font-family: "FontAwesome";
+		content: "\f0db";
+	}
+}
+
+.atom-psql-html {
+	//background-color: @syntax-background-color;
+	//color:@syntax-text-color;
+	background-color: @base-background-color;
+	color: @text-color;
+	overflow: scroll;
+	box-sizing: border-box;
+	padding: 0;
+	font-size: @input-font-size;
+	font-family: Menlo, Consolas, "DejaVu Sans Mono", "monospace";
+	br {
+		display: none;
+	}
+	white-space: pre;
+
+	table {
+		border: 1px solid @base-border-color;
+		border-collapse: collapse;
+	}
+	table td, table th {
+		border: 1px solid @base-border-color;
+		padding: 3px 2px;
+	}
+	table tbody td {
+	}
+	table tr:nth-child(even) {
+		background: @background-color-highlight;
+		/*color: @text-color-highlight;*/
+	}
+	table tr th {
+		background: @background-color-success;
+		color: @text-color-highlight;
+		font-weight: bold;
+		border: 2px solid @base-border-color;
+	}
+
+
+}
+
+
+
+
+// put all our styling under this to minimise clashes
+.atom-psql-ui {
+	button[disabled]:hover {
+		border-color: @base-border-color;
+	}
+
+	select {
+		color: @text-color;
+		border-color: @panel-heading-background-color;
+		background-color: lighten(@overlay-background-color, 10%);
+		font-size: 1.25em;
+		height: 2em;
+		margin-bottom: 0.75em;
+	}
+
+	.row {
+		display: flex;
+		flex-direction: row;
+		padding: .3rem 0;
+	}
+
+	.row-centered {
+		align-items: center;
+	}
+
+	.row-item {
+		flex-shrink: 1;
+		flex-grow: 0;
+	}
+
+	.row-item-flex {
+		flex-shrink: 1;
+		flex-grow: 1;
+	}
+
+	.row-item-pad-right {
+		padding-right: .3rem;
+	}
+
+	.row-item-pad-left {
+		padding-left: .3rem;
+	}
+
+	// all styles for a data atom dialog
+	&.dialog {
+		display: flex;
+		flex-direction: column;
+		padding: 0.8rem;
+
+		select {
+			margin-bottom: 0;
+		}
+
+		label {
+			margin-bottom: 0;
+		}
+
+		atom-text-editor[mini] {
+			margin-bottom: 0;
+		}
+
+		.control-label {
+			flex-shrink: 0;
+			flex-grow: 0;
+			width: 7rem;
+		}
+
+		.heading {
+			padding: 0rem 0.3rem 1rem 0;
+			font-size: 14pt;
+		}
+
+		.btn-padding-left {
+			margin-left: 10px;
+		}
+
+		.label-or {
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
+
+		.control-port {
+			padding-left: 2rem;
+			padding-right: 1rem;
+		}
+
+		.buttons {
+			text-align:right;
+			padding: 1rem 0 0 0;
+		}
+
+	}
+
+
+}
+#btnList {
+	text-align:left;
+	margin-right: 20rem;
+}
+#btnConnect {
+	text-align:right;
+	margin-right: 1rem;
+}
+#btnClose {
+	text-align:right;
+}
+
+#dblist {
+	word-spacing: 5px;
+}
+
+div.dblist {
+	margin-top: 0.5rem;
+	margin-bottom: 0px;
+	span.dbn {
+		margin-right: 0.5rem;
+	}
+}

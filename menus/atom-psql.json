@@ -1,0 +1,50 @@
+{
+  "context-menu": {
+    "atom-text-editor": [
+      {
+        "label": "run selection",
+        "command": "atom-psql:run_selection"
+      }
+    ]
+  },
+  "menu": [
+    {
+      "label": "Packages",
+      "submenu": [
+        {
+          "label": "atom-psql",
+          "submenu": [
+            {
+              "label": "new Connection",
+              "command": "atom-psql:new_connection"
+            },
+            {
+              "label": "Database Information",
+              "command": "atom-psql:db_info"
+            },
+            {
+              "label": "Toggle ECHO",
+              "command": "atom-psql:toggle_echo"
+            },
+            {
+              "label": "send selection to terminal",
+              "command": "atom-psql:run_selection_term"
+            },
+            {
+              "label": "Run selection txt",
+              "command": "atom-psql:run_selection_text"
+            },
+            {
+              "label": "Run selection html",
+              "command": "atom-psql:run_selection_html"
+            },
+            {
+              "label": "Run selection edit",
+              "command": "atom-psql:run_selection_edit"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

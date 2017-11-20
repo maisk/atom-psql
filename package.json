@@ -1,0 +1,71 @@
+{
+  "name": "atom-psql",
+  "main": "./lib/atom-psql",
+  "version": "0.0.0",
+  "description": "atom integration with postgresql psql client",
+  "keywords": [],
+  "activationCommands": {},
+  "repository": "https://github.com/atom/atom-psql",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "atom-space-pen-views": "^2.0.5",
+    "etch": "^0.12.7",
+    "fs-extra": "^4.0.2",
+    "stream-buffers": "^3.0.1",
+    "underscore.string": "2.4.0"
+  },
+  "deserializers": {
+    "PsqlHtmlView": "psqlHtmlViewDeserialize"
+  },
+  "consumedServices": {
+    "platformioIDETerminal": {
+      "versions": {
+        ">=1.1.0": "consumeTerminalService"
+      }
+    }
+  },
+  "providedServices": {
+    "autocomplete.provider": {
+      "versions": {
+        "2.0.0": "provideAutocomplete"
+      }
+    }
+  },
+  "configSchema": {
+    "maximumSqlViews": {
+      "type": "integer",
+      "default": 4,
+      "minimum": 1,
+      "description": "The maximum number of sql view tabs before we start removing old ones"
+    },
+    "maximumSqlViewInKb": {
+      "type": "integer",
+      "default": 1000,
+      "minimum": 1,
+      "description": "The maximum sql view file size in Kb"
+    },
+    "readFromNamedPipe": {
+      "type": "boolean",
+      "default": true,
+      "description": "If enabled, we read from Named Pipe file otherwise we use file watcher"
+    },
+    "psqlCommand": {
+      "type": "string",
+      "default": "psql",
+      "description": "psql command"
+    },
+    "psqlPromptRegexp": {
+      "type": "string",
+      "default": "^‡\\w+:",
+      "description": "psql normal prompt regular expression (in order to find if pager is active)"
+    },
+    "psqlPagerStopSendCommand": {
+      "type": "string",
+      "default": "CTRL+C",
+      "description": "psql character sequence for sending to psql in order to stop the pager"
+    }
+  }
+}
