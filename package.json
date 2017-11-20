@@ -1,15 +1,15 @@
 {
   "name": "atom-psql",
   "main": "./lib/atom-psql",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Use postgresql psql client from within Atom",
   "keywords": [
-	 "psql",
-   "postgres",
-	 "postgresql",
-	 "sql",
-   "query"
-	],
+    "psql",
+    "postgres",
+    "postgresql",
+    "sql",
+    "query"
+  ],
   "activationCommands": {},
   "repository": "https://github.com/maisk/atom-psql",
   "license": "MIT",
