@@ -39,39 +39,5 @@
         "2.0.0": "provideAutocomplete"
       }
     }
-  },
-  "configSchema": {
-    "maximumSqlViews": {
-      "type": "integer",
-      "default": 4,
-      "minimum": 1,
-      "description": "The maximum number of sql view tabs before we start removing old ones"
-    },
-    "maximumSqlViewInKb": {
-      "type": "integer",
-      "default": 1000,
-      "minimum": 1,
-      "description": "The maximum sql view file size in Kb"
-    },
-    "readFromNamedPipe": {
-      "type": "boolean",
-      "default": true,
-      "description": "If enabled, we read from Named Pipe file otherwise we use file watcher"
-    },
-    "psqlCommand": {
-      "type": "string",
-      "default": "psql",
-      "description": "psql command"
-    },
-    "psqlPromptRegexp": {
-      "type": "string",
-      "default": "^‡\\w+:",
-      "description": "psql normal prompt regular expression (in order to find if pager is active)"
-    },
-    "psqlPagerStopSendCommand": {
-      "type": "string",
-      "default": "CTRL+C",
-      "description": "psql character sequence for sending to psql in order to stop the pager"
-    }
   }
 }

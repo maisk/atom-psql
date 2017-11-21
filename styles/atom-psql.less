@@ -161,27 +161,44 @@
 	}
 
 
-}
-#btnList {
-	text-align:left;
-	margin-right: 20rem;
-}
-#btnConnect {
-	text-align:right;
-	margin-right: 1rem;
-}
-#btnClose {
-	text-align:right;
-}
-
-#dblist {
-	word-spacing: 5px;
-}
-
-div.dblist {
-	margin-top: 0.5rem;
-	margin-bottom: 0px;
-	span.dbn {
-		margin-right: 0.5rem;
+	#btnList {
+		float: left;
 	}
+
+	#btnConnect {
+		margin-right: 1rem;
+	}
+
+	#dblist {
+		word-spacing: 0.8rem;
+	}
+
+	div.dblist {
+		margin-top: 1rem;
+		margin-bottom: 0px;
+		text-align: center;
+		span.dbn {
+			border: 1px solid @base-border-color;
+			border-radius: 3px;
+			background-color: @background-color-selected;
+			padding: 3px 6px 3px 6px;
+			display: inline-block;
+			float: left;
+			margin-left: 0.5rem;
+			margin-bottom: 0.3rem;
+			color:@text-color;
+		}
+
+		span.dbn:hover {
+			color: lighten(@text-color,40%);
+			background-color: lighten(@background-color-selected, 8%);
+		}
+
+		span.dbn:active {
+			text-decoration: underline;
+		}
+
+	}
+
+
 }
