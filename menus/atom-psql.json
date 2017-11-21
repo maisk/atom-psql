@@ -19,6 +19,10 @@
               "command": "atom-psql:new_connection"
             },
             {
+              "label": "Connection Info",
+              "command": "atom-psql:connection_info"
+            },
+            {
               "label": "Database Information",
               "command": "atom-psql:db_info"
             },
