@@ -169,13 +169,17 @@
 		margin-right: 1rem;
 	}
 
+	#errors {
+		padding-top: 1rem;
+		margin: 0px;
+	}
+
 	#dblist {
-		word-spacing: 0.8rem;
+		padding-top: 1rem;
+		margin: 0px;
 	}
 
 	div.dblist {
-		margin-top: 1rem;
-		margin-bottom: 0px;
 		text-align: center;
 		span.dbn {
 			border: 1px solid @base-border-color;
@@ -198,6 +202,14 @@
 			text-decoration: underline;
 		}
 
+	}
+
+
+	div.errors {
+		//background-color: @background-color-error;
+		span.err_msg {
+			color: @text-color-error;
+		}
 	}
 
 
