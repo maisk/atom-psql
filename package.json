@@ -20,6 +20,7 @@
     "atom-space-pen-views": "^2.0.5",
     "etch": "^0.12.7",
     "fs-extra": "^4.0.2",
+    "n-readlines": "^0.2.8",
     "underscore.string": "2.4.0"
   },
   "deserializers": {
