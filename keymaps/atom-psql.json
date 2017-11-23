@@ -1,11 +1,11 @@
 {
   "atom-workspace atom-text-editor": {
-    "f5": "atom-psql:run_selection_html",
-    "f6": "atom-psql:run_selection_text",
-    "f7": "atom-psql:run_selection_edit",
-    "f8": "atom-psql:toggle_echo",
-    "f9": "atom-psql:new_connection",
+    "shift-enter": "atom-psql:querySelection",
     "ctrl-enter": "atom-psql:run_selection_term",
-    "shift-enter": "atom-psql:querySelection"
+    "f5": "atom-psql:run_selection_term",
+    "f6": "atom-psql:run_selection_html",
+    "f7": "atom-psql:run_selection_text",
+    "f8": "atom-psql:run_selection_edit",
+    "f9": "atom-psql:new_connection"
   }
 }
