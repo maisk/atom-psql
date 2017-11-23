@@ -17,12 +17,18 @@
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
+    "atom-package-deps": "^4.6.0",
     "atom-space-pen-views": "^2.0.5",
     "etch": "^0.12.7",
     "fs-extra": "^4.0.2",
     "n-readlines": "^0.2.8",
     "underscore.string": "2.4.0"
   },
+  "package-deps": [
+    "tool-bar",
+    "platformio-ide-terminal"
+  ],
+
   "deserializers": {
     "PsqlHtmlView": "psqlHtmlViewDeserialize"
   },
@@ -30,6 +36,11 @@
     "platformioIDETerminal": {
       "versions": {
         ">=1.1.0": "consumeTerminalService"
+      }
+    },
+    "tool-bar": {
+      "versions": {
+        "^0 || ^1": "consumeToolBar"
       }
     }
   },
