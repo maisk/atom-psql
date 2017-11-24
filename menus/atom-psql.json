@@ -31,6 +31,10 @@
               "command": "atom-psql:db_info"
             },
             {
+              "label": "Show psql terminal errors",
+              "command":"atom-psql:show_terminal_erors"
+            },
+            {
               "label": "Toggle ECHO",
               "command": "atom-psql:toggle_echo"
             },
