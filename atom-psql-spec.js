@@ -1,6 +1,6 @@
 'use babel';
 
-import AtomPsql from '../lib/atom-psql';
+import AtomPsql from './lib/atom-psql';
 
 // Use the command `window:run-package-specs` (cmd-alt-ctrl-p) to run specs.
 //
