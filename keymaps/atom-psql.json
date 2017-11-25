@@ -1,6 +1,5 @@
 {
   "atom-workspace atom-text-editor": {
-    "shift-enter": "atom-psql:querySelection",
     "ctrl-enter": "atom-psql:run_selection_term",
     "f5": "atom-psql:run_selection_term",
     "f6": "atom-psql:run_selection_html",

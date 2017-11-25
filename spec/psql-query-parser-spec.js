@@ -52,7 +52,7 @@ $fn$ LANGUAGE plpgsql; select 1 from now();
    FROM now();
   `,
 //8
-    `
+  `
 select 
 $$val1 
 val2 ' $ 
@@ -94,6 +94,8 @@ let dump1 = function (sql) {
 }
 
 
+
+
 //let qp = new PsqlQueryParser();
 
 describe('PsqlQueryParser', () => {
@@ -126,6 +128,32 @@ describe('PsqlQueryParser', () => {
   });
   it('test3', () => {
 
+    // 0 1 1 "SELECT ❎,❎,❎,2 FROM NOW()"
+    // 0 1 2 "select 1"
+    // -------------------------------------------------------------------------------
+    // 1 1 1 "SELECT ❎, ❎,2 FROM NOW()"
+    // -------------------------------------------------------------------------------
+    // 2 1 1 "SELECT ❎, ❎,2 FROM NOW()"
+    // -------------------------------------------------------------------------------
+    // 3 1 1 "begin"
+    // 3 1 2 "select 1"
+    // 3 1 3 "commit"
+    // -------------------------------------------------------------------------------
+    // 4 1 1 "begin"
+    // 4 1 2 "select 1 FROM "table1""
+    // -------------------------------------------------------------------------------
+    // 4 2 1 "commit"
+    // -------------------------------------------------------------------------------
+    // 5 1 1 "CREATE OR REPLACE FUNCTION test2(arg1 integer) RETURNS varchar AS ❎ LANGUAGE plpgsql"
+    // 5 1 2 "select 1 from now()"
+    // -------------------------------------------------------------------------------
+    // 6 1 1 "SELECT t1.a,t2.a FROM s1.table1 t1 JOIN s1.table2 t2 ON (t1.id = t2.id) WHERE t1.c in (❎,❎) ORDER BY t1.d LIMIT 1"
+    // -------------------------------------------------------------------------------
+    // 7 1 1 "select ❎ FROM now()"
+    // -------------------------------------------------------------------------------
+    // 8 1 1 "select ❎ FROM now()"
+    // -------------------------------------------------------------------------------
+
     let i = 0;
     for (let sql of test_sqls) {
       let qp = new PsqlQueryParser();
@@ -146,6 +174,50 @@ describe('PsqlQueryParser', () => {
     }
     console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
   });
+
+
+  it('test5', () => {
+    let qp = new PsqlQueryParser();
+    qp.addText('select * from now()');
+    let queries = qp.getQueriesExtend();
+    let ql = queries.length;
+    expect(ql).toBe(1);
+    if (ql == 1) {
+      let q = queries[0];
+      expect(q['q']).toBe('select * from now();');
+      let clean = q['clean'];
+      expect(clean.length).toBe(1);
+      if (clean.length == 1) {
+        expect(clean[0]).toBe('select * from now()');
+      }
+    }
+  });
+
+  it('test6', () => {
+    let qp = new PsqlQueryParser();
+    qp.addText(test_sqls[6]);
+    let queries = qp.getQueriesExtend();
+    let ql = queries.length;
+    expect(ql).toBe(1);
+    if (ql == 1) {
+      let q = queries[0];
+      console.log(q['q']);
+      //expect(q['q']).toBe('select * from now();');
+      let clean = q['clean'];
+      expect(clean.length).toBe(1);
+      if (clean.length == 1) {
+        let okQ = 'SELECT t1.a,t2.a FROM s1.table1 t1 JOIN s1.table2 t2 ON (t1.id = t2.id) WHERE t1.c in (❎,❎) ORDER BY t1.d LIMIT 1';
+        console.log(okQ);
+        expect(clean[0]).toBe(okQ);
+      }
+    }
+    console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+  });
+
+
+
+
+
 
 
 });

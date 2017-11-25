@@ -26,7 +26,8 @@
   },
   "package-deps": [
     "tool-bar",
-    "platformio-ide-terminal"
+    "platformio-ide-terminal",
+		"language-pgsql"
   ],
   "deserializers": {
     "PsqlHtmlView": "psqlHtmlViewDeserialize"
