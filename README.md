@@ -1,5 +1,5 @@
 # atom-psql
-Use postgresql psql client from within Atom
+Use PostgreSQL psql client from within Atom
 
 
 ![alt text](https://raw.githubusercontent.com/maisk/atom-psql/master/doc/atom-psql.png "screenshot")
