@@ -54,19 +54,32 @@ $fn$ LANGUAGE plpgsql; select 1 from now();
 //8
   `
 select 
+--sxolio ;
 $$val1 
 val2 ' $ 
 val3 $$ 
 FROM now();
 `,
+//9
+`
+  SELECT t1.a,t2.a FROM s1.table1 t1
+  JOIN s1.table2 t2 ON (t1.id = t2.id)
+  -- sxolio 1 ;
+WHERE  t1.c in ('a',$$b$$)
+/*
+sxolio 2 ;
+*/
+ORDER BY t1.d
+LIMIT 1;
+`
 
 ];
 
 let correct_test_queries_counts = [
-  [1, 2], [1, 1], [1, 1], [1, 3], [2, 3], [1, 2], [1, 1], [1, 1], [1, 1]
+  [1, 2], [1, 1], [1, 1], [1, 3], [2, 3], [1, 2], [1, 1], [1, 1], [1, 1], [1, 1]
 ];
 
-//6
+
 
 let dump1 = function (sql) {
   console.log(sql);
@@ -85,8 +98,10 @@ let dump1 = function (sql) {
     console.log('#-----------------------------------------------')
     if (q['clean']) {
       let qcs = q['clean'];
+      let j = 0;
       for (let qc of qcs) {
-        console.log("#c:  ", qc);
+        j+=1;
+        console.log("#c" + j +":  ", qc);
       }
     }
     console.log("==========================================================================");
@@ -117,6 +132,7 @@ describe('PsqlQueryParser', () => {
       for (let query of queries) {
         c += query['clean'].length;
       }
+
       let q_ok = correct_test_queries_counts[i][0];
       let c_ok = correct_test_queries_counts[i][1];
       console.log("#", i, 'CMD_COUNT', q, 'CLEAN_COUNT', c, 'oks:', q_ok, c_ok);
@@ -217,6 +233,24 @@ describe('PsqlQueryParser', () => {
 
 
 
+  it('test10',()=>{
+    console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+    console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+    console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+    console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+let SQL=`
+SELECT t1.a,t2.a FROM s1.table1 t1
+JOIN s1.table2 t2 ON (t1.id = t2.id)
+-- sxolio 1 ;
+WHERE  t1.c in ('a',$$b$$)
+/*
+sxolio 2 ;
+*/
+ORDER BY t1.d
+LIMIT 1;
+  `;
+    dump1(SQL);
+   });
 
 
 
