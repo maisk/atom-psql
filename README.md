@@ -30,5 +30,9 @@ currently run only in Linux and Mac.
 In order to start use: F9 or menu: "Packages -> atom-psql -> new Connection"  
  
 
-
+for demosntration of \gset you can try:
+<pre>
+SELECT 1 as v1, now() \gset r_
+SELECT :r_v1 + 1;
+</pre>
 
