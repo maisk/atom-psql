@@ -7,7 +7,9 @@
     "f7": "atom-psql:run_selection_text",
     "f8": "atom-psql:run_selection_edit",
     "f9": "atom-psql:new_connection"
+  },
+  "atom-workspace": {
+    "ctrl-`": "atom-psql:toggle_psql"
   }
-
 
 }
