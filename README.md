@@ -11,12 +11,13 @@ Basic Features:
  * Transfer commands from editor to psql  
  * transfer commands from psq to editor with \e OR :e
  * Psql error rendering with atom notifications
+ * \gset variables view
  * Render query results in html view
  * Render query results in text view
  * Open query results in editor
  * Wditor autocomplete for table names 
  * Toolbar 
- * Apecific psqlrc for atom-psql  use: ~/.atom-psqlrc
+ * Specific psqlrc for atom-psql  use: ~/.atom-psqlrc
  * Autoclose of query result views
  * Capture psql ouput to terminal :atom_capture_start atom_capture_stop
  * Create connection using environment variables or gui dialog
@@ -24,8 +25,10 @@ Basic Features:
  * Transaction status integrated into gui
  
 
-currently tested only in Linux.
+currently run only in Linux and Mac.
 
+In order to start use: F9 or menu: "Packages -> atom-psql -> new Connection"  
+ 
 
 
 

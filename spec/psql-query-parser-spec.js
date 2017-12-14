@@ -1,6 +1,7 @@
 'use babel';
 
-import {PsqlQueryParser} from '../lib/psql-query-parser';
+import {PsqlQueryParserLine} from '../lib/psql-query-parser-line';
+//import {PsqlQueryParser} from '../lib/psql-query-parser';
 
 let test_sqls = [
 //0
@@ -71,12 +72,32 @@ sxolio 2 ;
 */
 ORDER BY t1.d
 LIMIT 1;
+`,
+  //10
+`
+WITH regional_sales AS (
+        SELECT region, SUM(amount) AS total_sales
+        FROM orders
+        GROUP BY region
+     ), top_regions AS (
+        SELECT region
+        FROM regional_sales
+        WHERE total_sales > (SELECT SUM(total_sales)/10 FROM regional_sales)
+     )
+     --soxlio
+SELECT region,
+       product,
+       SUM(quantity) AS product_units,
+       SUM(amount) AS product_sales
+FROM orders
+WHERE region IN (SELECT region FROM top_regions)
+GROUP BY region, product;
 `
 
 ];
 
 let correct_test_queries_counts = [
-  [1, 2], [1, 1], [1, 1], [1, 3], [2, 3], [1, 2], [1, 1], [1, 1], [1, 1], [1, 1]
+  [1, 2], [1, 1], [1, 1], [1, 3], [2, 3], [1, 2], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1]
 ];
 
 
@@ -84,7 +105,7 @@ let correct_test_queries_counts = [
 let dump1 = function (sql) {
   console.log(sql);
   console.log('--');
-  let qp = new PsqlQueryParser();
+  let qp = new PsqlQueryParserLine();
   //qp.reset();
   qp.addText(sql);
   let queries = qp.getQueriesExtend();
@@ -108,12 +129,38 @@ let dump1 = function (sql) {
   }
 }
 
+// let dump2 = function (sql) {
+//   console.log(sql);
+//   console.log('--');
+//   let qp = new PsqlQueryParser();
+//   //qp.reset();
+//   qp.addText(sql);
+//   let queries = qp.getQueriesExtend();
+//
+//   console.log('------------------------------------------------')
+//   let qc = 0;
+//   for (let q of queries) {
+//     qc += 1;
+//     console.log('>>>:', qc);
+//     console.log(q['q']);
+//     console.log('#-----------------------------------------------')
+//     if (q['clean']) {
+//       let qcs = q['clean'];
+//       let j = 0;
+//       for (let qc of qcs) {
+//         j+=1;
+//         console.log("#c" + j +":  ", qc);
+//       }
+//     }
+//     console.log("==========================================================================");
+//   }
+// }
 
 
 
-//let qp = new PsqlQueryParser();
+describe('PsqlQueryParserLine', () => {
 
-describe('PsqlQueryParser', () => {
+
 
   it('test1', () => {
     dump1(test_sqls[6]);
@@ -124,7 +171,7 @@ describe('PsqlQueryParser', () => {
 
     let i = 0;
     for (let sql of test_sqls) {
-      let qp = new PsqlQueryParser();
+      let qp = new PsqlQueryParserLine();
       qp.addText(sql);
       let queries = qp.getQueriesExtend();
       let q = queries.length;
@@ -172,7 +219,7 @@ describe('PsqlQueryParser', () => {
 
     let i = 0;
     for (let sql of test_sqls) {
-      let qp = new PsqlQueryParser();
+      let qp = new PsqlQueryParserLine();
       qp.addText(sql);
       let queries = qp.getQueriesExtend();
       let q = queries.length;
@@ -193,7 +240,7 @@ describe('PsqlQueryParser', () => {
 
 
   it('test5', () => {
-    let qp = new PsqlQueryParser();
+    let qp = new PsqlQueryParserLine();
     qp.addText('select * from now()');
     let queries = qp.getQueriesExtend();
     let ql = queries.length;
@@ -210,7 +257,7 @@ describe('PsqlQueryParser', () => {
   });
 
   it('test6', () => {
-    let qp = new PsqlQueryParser();
+    let qp = new PsqlQueryParserLine();
     qp.addText(test_sqls[6]);
     let queries = qp.getQueriesExtend();
     let ql = queries.length;
@@ -236,22 +283,27 @@ describe('PsqlQueryParser', () => {
   it('test10',()=>{
     console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
     console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-    console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-    console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-let SQL=`
-SELECT t1.a,t2.a FROM s1.table1 t1
-JOIN s1.table2 t2 ON (t1.id = t2.id)
--- sxolio 1 ;
-WHERE  t1.c in ('a',$$b$$)
-/*
-sxolio 2 ;
-*/
-ORDER BY t1.d
-LIMIT 1;
-  `;
+    let SQL= test_sqls[9];
     dump1(SQL);
    });
 
 
 
+
 });
+
+
+
+// describe('PsqlQueryParser', () => {
+//
+//   it('testDEV', () => {
+//     console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+//     console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+//     let SQL = `
+// SELECT 'koko','lala','tes;
+// ;t1',2 FROM NOW(); select 1;
+// `;
+//     dump2(SQL);
+//   });
+//
+// });
