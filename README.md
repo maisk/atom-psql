@@ -15,7 +15,7 @@ Basic Features:
  * Render query results in html view
  * Render query results in text view
  * Open query results in editor
- * Wditor autocomplete for table names 
+ * Editor autocomplete for table names 
  * Toolbar 
  * Specific psqlrc for atom-psql  use: ~/.atom-psqlrc
  * Autoclose of query result views
@@ -23,6 +23,7 @@ Basic Features:
  * Create connection using environment variables or gui dialog
  * List Databases integrated in login dialog 
  * Transaction status integrated into gui
+ * send \d [text] to psql when right click on selected text (in editor) 
  
 
 currently run only in Linux and Mac.
