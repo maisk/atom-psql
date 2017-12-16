@@ -30,7 +30,7 @@
 	//color:@syntax-text-color;
 	background-color: @base-background-color;
 	color: @text-color;
-	overflow: scroll;
+	overflow: auto;
 	box-sizing: border-box;
 	padding: 0;
 	font-size: @input-font-size;
@@ -51,10 +51,14 @@
 		margin: 1px;
 		border: 1px solid @base-border-color;
 		border-collapse: collapse;
+		//overflow: auto;
 	}
 	table td, table th {
 		border: 1px solid @base-border-color;
 		padding: 3px 2px;
+	}
+	gable tbody {
+		//overflow: auto;
 	}
 	table tbody td {
 	}
@@ -69,11 +73,7 @@
 		border: 2px solid @base-border-color;
 	}
 
-
 }
-
-
-
 
 // put all our styling under this to minimise clashes
 .atom-psql-ui {
@@ -162,12 +162,11 @@
 		}
 
 		.buttons {
-			text-align:right;
+			text-align: right;
 			padding: 1rem 0 0 0;
 		}
 
 	}
-
 
 	#btnList {
 		float: left;
@@ -198,11 +197,11 @@
 			float: left;
 			margin-left: 0.5rem;
 			margin-bottom: 0.3rem;
-			color:@text-color;
+			color: @text-color;
 		}
 
 		span.dbn:hover {
-			color: lighten(@text-color,40%);
+			color: lighten(@text-color, 40%);
 			background-color: lighten(@background-color-selected, 8%);
 		}
 
@@ -212,7 +211,6 @@
 
 	}
 
-
 	div.errors {
 		//background-color: @background-color-error;
 		span.err_msg {
@@ -220,16 +218,11 @@
 		}
 	}
 
-
 }
-
-
-
-
 
 psql-variables-view {
 
-	overflow:auto;
+	overflow: auto;
 	table.psql-variables-table {
 		margin: 8px;
 		border: 1px solid @base-border-color;
@@ -248,3 +241,110 @@ psql-variables-view {
 	}
 
 }
+
+psql-db {
+
+	overflow: auto;
+
+	div.s23 {
+		margin-left: 0.5rem;
+		font-size: 14pt;
+		clear: both;
+	}
+	div.s23::before {
+		font-family: "FontAwesome";
+		content: "\f0db";
+	}
+
+	div.s13 {
+		margin-left: 0.5rem;
+		font-size: 14pt;
+		clear: both;
+	}
+	div.s13::before {
+		font-family: "FontAwesome";
+		content: "\f0ce";
+	}
+
+	div.t1 {
+		text-align: center;
+		span.rel {
+			font-size: 10pt;
+			border: 1px solid @base-border-color;
+			border-radius: 3px;
+			background-color: @background-color-selected;
+			padding: 3px 6px 3px 6px;
+			display: inline-block;
+			float: left;
+			margin-left: 0.5rem;
+			margin-bottom: 0.3rem;
+			color: @text-color;
+		}
+
+		span.rel:hover {
+			color: lighten(@text-color, 40%);
+			background-color: lighten(@background-color-selected, 8%);
+		}
+
+		span.rel:active {
+			text-decoration: underline;
+		}
+
+	}
+
+}
+
+psql-rel {
+
+	overflow: auto;
+	padding: 9px 4px 5px 7px;
+
+	//div.describe p.pre {
+	font-family: Consolas, "DejaVu Sans Mono", "monospace";
+	white-space: pre;
+	font-size: 10pt;
+	br {
+		display: none;
+	}
+	white-space: pre;
+
+	.psql-out-html {
+		padding: 9px 4px 5px 7px;
+	}
+	.psql-out-text {
+		padding: 10px 4px 5px 7px;
+	}
+
+	table {
+		margin: 1px;
+		border: 1px solid @base-border-color;
+		border-collapse: collapse;
+		//overflow: auto;
+	}
+	table td, table th {
+		border: 1px solid @base-border-color;
+		padding: 3px 2px;
+	}
+	gable tbody {
+		//overflow: auto;
+	}
+	table tbody td {
+	}
+	table tr:nth-child(even) {
+		background: @background-color-highlight;
+		/*color: @text-color-highlight;*/
+	}
+	table tr th {
+		background: @background-color-success;
+		color: @text-color-highlight;
+		font-weight: bold;
+		border: 2px solid @base-border-color;
+	}
+
+}
+
+div.icon-table::before {
+	font-family: "FontAwesome";
+	content: "\f0ce";
+}
+

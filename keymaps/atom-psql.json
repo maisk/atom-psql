@@ -2,6 +2,7 @@
 
   "atom-workspace atom-text-editor": {
     "ctrl-enter": "atom-psql:run_selection_term",
+    "shift-enter": "atom-psql:querySelection",
     "f5": "atom-psql:run_selection_term",
     "f6": "atom-psql:run_selection_html",
     "f7": "atom-psql:run_selection_text",

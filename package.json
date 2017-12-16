@@ -34,6 +34,8 @@
   "deserializers": {
     "PsqlHtmlView": "psqlHtmlViewDeserialize"
   },
+
+
   "consumedServices": {
     "tool-bar": {
       "versions": {
