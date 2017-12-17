@@ -9,13 +9,14 @@ Use PostgreSQL psql client from within Atom
 Basic Features:
  * Integrated psql terminal
  * Transfer commands from editor to psql  
- * transfer commands from psq to editor with \e OR :e
+ * transfer commands from psq to editor with \e
  * Psql error rendering with atom notifications
  * \gset variables view
  * Render query results in html view
  * Render query results in text view
  * Open query results in editor
  * Editor autocomplete for table names 
+ * Editor autocomplete for gset variables
  * Toolbar 
  * Specific psqlrc for atom-psql  use: ~/.atom-psqlrc
  * Autoclose of query result views
@@ -23,7 +24,9 @@ Basic Features:
  * Create connection using environment variables or gui dialog
  * List Databases integrated in login dialog 
  * Transaction status integrated into gui
- * send \d [text] to psql when right click on selected text (in editor) 
+ * send \d [text] to psql when right click on selected text (in editor)
+ * explore tables and views (schema and rows)
+ * extra right click context options in some places 
  
 
 currently run only in Linux and Mac.

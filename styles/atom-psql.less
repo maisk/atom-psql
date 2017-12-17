@@ -319,14 +319,10 @@ psql-rel {
 		margin: 1px;
 		border: 1px solid @base-border-color;
 		border-collapse: collapse;
-		//overflow: auto;
 	}
 	table td, table th {
 		border: 1px solid @base-border-color;
 		padding: 3px 2px;
-	}
-	gable tbody {
-		//overflow: auto;
 	}
 	table tbody td {
 	}
@@ -340,6 +336,50 @@ psql-rel {
 		font-weight: bold;
 		border: 2px solid @base-border-color;
 	}
+
+	.cmd_span {
+		display: block;
+		padding-left: 4px;
+		margin-bottom: 4px;
+		width:100%;
+		border-bottom: 1px solid @base-border-color;
+	}
+
+	.inputs {
+		display:flex;
+		flex-direction: row;
+		margin-bottom: 8px;
+		padding-bottom: 4px;
+		border-bottom: 1px solid @base-border-color;
+	}
+
+	div.results {
+	}
+
+	div.results table {
+	}
+
+	span.sel {
+		//border: 1px solid green;
+		padding: 0px;
+		margin: 3px 0px 0px 4px;
+		font-size: 12pt;
+	}
+
+	.editor.mini.sel {
+		width:32pt;
+	}
+	.editor.mini.cmd {
+		margin: 0px;
+		padding: 0px;
+		width:300pt;
+	}
+
+	button.sel {
+		margin-left: 12px;
+	}
+
+
 
 }
 
