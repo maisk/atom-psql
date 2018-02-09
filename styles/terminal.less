@@ -24,7 +24,7 @@ psql-terminal-view {
     height: 100%;
     font-family: Menlo, Consolas, 'DejaVu Sans Mono', monospace;
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.2;
 
     .xterm-viewport {
       width: 100%;
@@ -40,6 +40,10 @@ psql-terminal-view {
 
     .xterm-rows {
       padding-left: 14px;
+      //div { border-bottom: 1px solid #202020}
+      //div:nth-child(even) {background: #202020}
+      div:nth-child(odd) {background: #181818}
+      //div:nth-child(odd) {background: #101010}
     }
   }
 
