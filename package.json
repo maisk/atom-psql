@@ -1,7 +1,7 @@
 {
   "name": "atom-psql",
   "main": "./lib/atom-psql",
-  "version": "0.26.0",
+  "version": "0.27.0",
   "description": "Use PostgreSQL psql client from within Atom",
   "keywords": [
     "psql",
