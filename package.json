@@ -22,7 +22,7 @@
     "etch": "^0.12.7",
     "fs-extra": "^4.0.2",
     "n-readlines": "^0.2.8",
-    "underscore.string": "2.4.0",
+    "underscore.string": "3.0.0",
     "node-pty": "^0.6.8",
     "resize-observer-polyfill": "^1.4.2",
     "xterm": "^2.7.0"
